@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package models;
+
+option go_package = "grpc-ex/common/models";
+
+import "google/protobuf/empty.proto";
+
+service Users {
+    rpc FindAll(google.protobuf.Empty) returns(UserLists) {}
+    rpc Create(User) returns (User){}
+}
+
+message User {
+    int64 id = 1;
+    string name = 2;
+}
+
+message UserLists {
+    repeated User lists = 1;
+}
